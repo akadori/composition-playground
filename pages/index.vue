@@ -1,19 +1,79 @@
 <template>
   <div class="container">
-    <!-- <MouseCoordinate /> -->
-    <CompositionPlayground />
+    <!-- <MouseCoordinate />
+    <CompositionPlayground /> -->
+    Array<br />
+    <Array />
+    <br /><br /><br /><br /><br /><br />
+    ReactivityUtilities<br />
+    <ReactivityUtilities />
+    <br /><br /><br /><br /><br /><br />
+    TemplateRefs<br />
+    <TemplateRefs />
+    <br /><br /><br /><br /><br /><br />
+    Injection<br />
+    <Injection />
+    <br /><br /><br /><br /><br /><br />
+    LifecycleHook<br />
+    <LifecycleHook />
+    <br /><br /><br /><br /><br /><br />
+    Setup<br />
+    <Setup :name="name" :aaaa="'bbbbb'" />
+    <br /><br /><br /><br /><br /><br />
+    Reactive<br />
+    <Reactive />
+    <br /><br /><br /><br /><br /><br />
+    Computed<br />
+    <Computed />
+    <br /><br /><br /><br /><br /><br />
+    WatchEffect<br />
+    <WatchEffect />
+    <br /><br /><br /><br /><br /><br />
+    Watch<br />
+    <Watch />
+    <br /><br /><br /><br /><br /><br />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 // import MouseCoordinate from '~/components/MouseCoordinate.vue'
-import CompositionPlayground from '~/components/CompositionPlayground.vue'
+// import CompositionPlayground from '~/components/CompositionPlayground.vue'
+import Setup from '~/components/ApiReference/Setup.vue'
+import Reactive from '~/components/ApiReference/Reactive.vue'
+import Computed from '~/components/ApiReference/Computed.vue'
+import WatchEffect from '~/components/ApiReference/WatchEffect.vue'
+import Watch from '~/components/ApiReference/Watch.vue'
+import LifecycleHook from '~/components/ApiReference/LifecycleHook.vue'
+import Injection from '~/components/ApiReference/Injection.vue'
+import TemplateRefs from '~/components/ApiReference/TemplateRefs.vue'
+import ReactivityUtilities from '~/components/ApiReference/ReactivityUtilities.vue'
+import Array from '~/components/Array.vue'
 
 export default Vue.extend({
   components: {
     // MouseCoordinate,
-    CompositionPlayground,
+    // CompositionPlayground,
+    Setup,
+    Reactive,
+    Computed,
+    WatchEffect,
+    Watch,
+    LifecycleHook,
+    Injection,
+    TemplateRefs,
+    ReactivityUtilities,
+    Array,
+  },
+  data() {
+    return { name: 'first', random: true }
+  },
+  mounted() {
+    setInterval(
+      () => (this.name = Math.random().toString(32).substring(2)),
+      1000
+    )
+    setInterval(() => (this.random = Math.random() > 0.5), 1000)
   },
 })
 </script>
@@ -22,7 +82,6 @@ export default Vue.extend({
 .container {
   margin: 0 auto;
   min-height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;

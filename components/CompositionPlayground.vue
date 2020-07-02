@@ -2,11 +2,13 @@
   <div>
     count is {{ count }}, double is {{ double }}
     <div>Time Left: {{ timeLeft }}<button @click="reset">reset</button></div>
+    <div>x is {{ x }}, y is {{ y }}.</div>
   </div>
 </template>
 
 <script lang="ts">
 import { ref, computed, onMounted, defineComponent } from '@vue/composition-api'
+import useMousePosition from './MouseTracking'
 
 function useTimer() {
   const LIMIT = 60
@@ -28,7 +30,7 @@ function useTimer() {
 export default defineComponent({
   setup() {
     onMounted(() => {
-      console.log('component is mounted!')
+      // console.log('component is mounted!')
     })
     const count = ref(0)
 
@@ -47,6 +49,7 @@ export default defineComponent({
       double,
       reset,
       timeLeft,
+      ...useMousePosition(),
     }
   },
 })
